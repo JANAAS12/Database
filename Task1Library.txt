@@ -1,0 +1,45 @@
+create database LibraryDB;
+Use LibraryDB;
+
+create table book(
+bookID INT primary key,
+title varchar(50),
+authorID int ,
+publishedYear int,
+copiesAvailable int,
+bookCategory varchar(50)
+);
+
+create table author(
+authorID int ,
+firstName varchar(50),
+lastName varchar(50),
+birthYear int 
+);
+
+insert into book(bookID,title,authorID,publishedYear,copiesAvailable,bookCategory)Values(1,'a',12,2000,5,'science');
+insert into book(bookID,title,authorID,publishedYear,copiesAvailable,bookCategory)Values(2,'b',13,2001,3,'history');
+insert into book(bookID,title,authorID,publishedYear,copiesAvailable,bookCategory)Values(3,'c',14,2000,6,'science');
+insert into book(bookID,title,authorID,publishedYear,copiesAvailable,bookCategory)Values(4,'d',15,2025,8,'history');
+insert into book(bookID,title,authorID,publishedYear,copiesAvailable,bookCategory)Values(5,'e',16,2000,4,'science');
+
+insert into author(authorID,firstName,lastName,birthYear)values(12,'Ana','De',1890);
+insert into author(authorID,firstName,lastName,birthYear)values(12,'Isabel','Pi',1900);
+insert into author(authorID,firstName,lastName,birthYear)values(13,'Cristina','Al',1890);
+insert into author(authorID,firstName,lastName,birthYear)values(16,'Lora','Je',1980);
+insert into author(authorID,firstName,lastName,birthYear)values(17,'Mary','Do',1899);
+
+select copiesAvailable from book;
+
+select Max(copiesAvailable) from book;
+select Min(copiesAvailable) from book;
+
+select AVG(publishedYear) from book;
+
+select Count(*) from book;
+
+delete from book;
+alter table author
+add email varchar(50 ),
+    phoneNum int ;
+drop table author;
