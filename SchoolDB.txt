@@ -1,0 +1,75 @@
+create database School;
+USE School;
+
+create table Teacher(
+ID int primary Key,
+Name varchar(50),
+Email varchar(50))
+;
+
+create table TeacherDetails(
+ID int primary Key,
+Teacher_Id int unique,
+PhoneNumber int ,
+FOREIGN KEY (Teacher_Id) REFERENCES Teacher(ID)
+);
+
+
+
+create table Student(
+ID int primary Key,
+Name varchar(50),
+Age int ,
+Teacher_Id int,
+FOREIGN KEY (Teacher_Id) REFERENCES Teacher(ID)
+);
+
+create table Courses(
+ID int primary Key,
+CourseName varchar(50),
+Number int,
+Teacher_Id int,
+FOREIGN KEY (Teacher_Id) REFERENCES Teacher(ID));
+
+create table Student_Course(
+ID int primary Key,
+Student_id int,
+Course_id int,
+FOREIGN KEY (Student_id) REFERENCES Student(ID),
+FOREIGN KEY (Course_id) REFERENCES Courses(ID));
+
+INSERT INTO Teacher (ID, Name, email) VALUES 
+(1, 'Aya', 'Aya@example.com'),
+(2, 'Layla', 'Layla@example.com'),
+(3, 'Aws', 'Aws@example.com'),
+(4, 'Yazan', 'Yazan@example.com'),
+(5, 'Mai', 'Mai@example.com');
+
+INSERT INTO TeacherDetails (ID,Teacher_Id, PhoneNumber) VALUES 
+(10,1, 0799121777),
+(11,2, 0799121777),
+(12,3, 0799121766),
+(13,4, 0799981777),
+(14,5, 0799612777);
+
+INSERT INTO Courses (ID, CourseName, Number, Teacher_Id) VALUES 
+(101, 'science', 101, 1), 
+(102, 'physics', 102, 1), 
+(103, 'computerScience', 103, 2), 
+(104, 'Arabic', 104, 3), 
+(105, 'English', 105, 4);
+
+INSERT INTO Student (ID, Name, Age, Teacher_Id) VALUES 
+(1, 'Maya', 18, 1),
+(2, 'Jad', 19, 2),
+(3, 'Adam', 17, 3),
+(4, 'rana', 20, 4),
+(5, 'Ziad', 18, 5);
+
+INSERT INTO Student_Course (ID,Student_id, Course_id) VALUES 
+(10,1, 101),
+(11,1, 102),
+(12,2, 105),
+(13,3, 105),
+(14,4, 102), 
+(15,5, 101);
